@@ -36,6 +36,8 @@ const check = async () => {
   console.log('2c2g sold out', isSoldOut);
   if (!isSoldOut) {
     await open(TARGET_URL);
+    await browser.close();
+    process.exit(0);
   }
 };
 
