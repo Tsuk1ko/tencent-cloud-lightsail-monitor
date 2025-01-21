@@ -21,9 +21,7 @@ await page.goto(TARGET_URL);
 
 const getSoldOut = async (index: number) => {
   const soldOutList = await page.evaluate(() =>
-    Array.from(document.querySelectorAll('.buy-compare-package-option')).map(
-      (el) => el.classList.contains('is-soldout')
-    )
+    Array.from(document.querySelectorAll('.buy-compare-package-option')).map(el => el.classList.contains('is-soldout'))
   );
   console.log('list', soldOutList);
   return soldOutList[index];
@@ -41,9 +39,11 @@ const check = async () => {
   }
 };
 
-check();
+if (!IS_PREPARE) {
+  check();
 
-setInterval(async () => {
-  await page.reload();
-  await check();
-}, 60e3);
+  setInterval(async () => {
+    await page.reload();
+    await check();
+  }, 60e3);
+}
