@@ -31,7 +31,7 @@ const getSoldOut = async (index: number) => {
 
 const check = async () => {
   await page.waitForSelector('.buy-compare-package-option .unit');
-  console.log(new Date().toLocaleString());
+  console.log(new Date().toLocaleString('zh-Hans-CN'));
   const isSoldOut = await getSoldOut(1);
   console.log('2c2g sold out', isSoldOut);
   if (!isSoldOut) {
